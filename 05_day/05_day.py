@@ -58,18 +58,15 @@ def day_05_challenge_part_1():
 
 
 def move_num_from_a_to_b_multiple(num, a, b):
-    for x in range(num):
-        '''
-        print(all_stacks[a][0])
-        print(all_stacks[a])
-        print(all_stacks[b], '\n')
-        '''
-        all_stacks[b] = all_stacks[a][0]+all_stacks[b]
-        all_stacks[a] = all_stacks[a][1:]
-        '''
-        print(all_stacks[a])
-        print(all_stacks[b],'\n')
-        '''
+    print(all_stacks[a][0:num])
+    print(all_stacks[a])
+    print(all_stacks[b], '\n')
+
+    all_stacks[b] = all_stacks[a][0:num]+all_stacks[b]
+    all_stacks[a] = all_stacks[a][num:]
+
+    print(all_stacks[a])
+    print(all_stacks[b],'\n')
 
 
 def day_05_challenge_part_2():
@@ -87,9 +84,10 @@ def day_05_challenge_part_2():
             num_moved = int(split_line[1])
             from_pile = int(split_line[3])
             to_pile = int(split_line[5])
-            move_num_from_a_to_b(num_moved, from_pile, to_pile)
+            move_num_from_a_to_b_multiple(num_moved, from_pile, to_pile)
 
             line = file.readline().strip()
+
 
     top_of_stacks = ''
     for item in all_stacks[1:]:
